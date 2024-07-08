@@ -22,7 +22,7 @@ func HandleRequest(e MyEvent) (string, error) {
 
 func main() {
 
-	_ = app.NewApp()
+	myApp := app.NewApp()
 
-	lambda.Start(HandleRequest)
+	lambda.Start(myApp.AppHandler.RegisterUser)
 }
