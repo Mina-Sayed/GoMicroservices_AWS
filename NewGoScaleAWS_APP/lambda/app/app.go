@@ -6,18 +6,14 @@ import (
 )
 
 type App struct {
-	AppHandler api.ApiHandler
+	ApiHandler api.ApiHandler
 }
 
 func NewApp() App {
-
-	// we actually  initialize our database store
-	// gets passed DOWN Into the ApiHandler
-
-	db := database.NewDynamoDBClient()
+	db := database.NewDynamoDB()
 	apiHandler := api.NewApiHandler(db)
 
 	return App{
-		AppHandler: apiHandler,
+		ApiHandler: apiHandler,
 	}
 }
